@@ -15,9 +15,15 @@ Including another URLconf
 """
 from . import views
 from django.urls import path,include
-
+from django.conf.urls import url
+from polls.views import Home
 
 urlpatterns = [
     path('',views.index,name="index"),
-    path('home/', views.home,name="home"),
+    path('home/', views.Home.as_view(),name="home"),
+    path('question/', views.Questions.as_view(),name="home"),
+
+    url(r'^question_choice/(?P<pk>\d+)',views.QuestionChoice.as_view(),name="question_choice"),
+
+    url(r'^home/(?P<pk>[0-9]+)/$', views.Home1.as_view(), name='detail'),
 ]

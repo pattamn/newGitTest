@@ -2,9 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+<table border="2px">
+
+ {% for choice in object_list %}
+
+<tr>
+    {%if forloop.first  %}
+    <td>PResent {{ choice.question}}</td>
+    {%endif %}
+
+
+     <td>{{forloop.counter0|divisibleby:"4"}}   -{{choice.id}}</td>
+    <td> {{choice.question}}</td>
+
+
+    <td>{{choice.choice_text}}</td>
+
+</tr>
+
+{%endfor%}
+
+    </table>
 </body>
 </html>

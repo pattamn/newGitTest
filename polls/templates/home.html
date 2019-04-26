@@ -6,6 +6,34 @@
 </head>
 <body>
 <h2> This is my home page</h2>
-<h3> First Level is completed</h3>
+<h3> First Level is completed{{question.pub_date}}</h3>
+<table border="2px" bgcolor="lightgreen" style="margin:0 auto">
+    <tr><th>S no</th><th>Question</th><th>Date</th></tr>
+{%if  object_list %}
+    {% for i in object_list  %}
+<tr onclick="window.location='{{i.id}}'" class="row_pointer">
+
+    <td>{{forloop.counter}}</td>
+    <td>{{i.question_text}}</td>
+    <td>{{i.pub_date|date:'d,M Y'}}</td>
+    </a>
+</tr>
+    {% endfor %}
+{% else %}
+<tr>
+    <td>{{ object.question }}</td>
+    <td> {{object.choice_text}}</td>
+    <td>{{object.pub_date|date:'d,M Y'}}</td>
+</tr>
+
+
+    {%endif%}
+    </table>
 </body>
 </html>
+
+<style>
+    .row_pointer td{
+cursor: pointer;
+    }
+</style>
